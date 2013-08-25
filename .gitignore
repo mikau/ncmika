@@ -1,4 +1,4 @@
-#-----------------------------------
+﻿#-----------------------------------
 #- NetCommons2用 無視ファイル設定
 #-----------------------------------
 
@@ -14,7 +14,7 @@
 
 # install.inc.php はサーバにコミットされているので、
 # この無視ファイルでは無視できない。（以下のファイル）
-# html/webapp/config/install.inc.php
+html/webapp/config/install.inc.php
 # そのため、以下のGit のShell コマンドで無視設定する。
 # git update-index --assume-unchanged html\webapp\config\install.inc.php
 # Git Shell プロンプトを起動し、develop ブランチへ移動、無視ファイル指定のコマンドを実行する。
