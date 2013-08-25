@@ -18,7 +18,7 @@ define('INSTALL_INC_DIR', transPathSeparator(dirname(__FILE__)));
 // ----------------------------
 // ベースのURL値
 // ----------------------------
-define('BASE_URL', 'http://');
+define('BASE_URL', 'http://localhost/ncmika/html');
 // -------------------------------------------------
 // ベースのURL値(ソースがあるCoreのNetCommonsのURL)
 // 基本：BASE_URLと同じ
@@ -49,13 +49,13 @@ define('STYLE_DIR', BASE_DIR . '/webapp/style');
 // (注意)ディレクトリ指定での最後に「/」をつけること
 // デフォルト(BASE_DIR  . '/webapp/uploads/')
 // ----------------------------
-define('FILEUPLOADS_DIR', dirname(INSTALL_INC_DIR)  . '/uploads/');
+define('FILEUPLOADS_DIR', dirname(INSTALL_INC_DIR) . '/uploads/');
 
 // ----------------------------
 // データベース用設定値
 // ----------------------------
-define('DATABASE_DSN', '');
-define('DATABASE_PREFIX', '');
+define('DATABASE_DSN', 'mysql://root:@localhost/ncmika');
+define('DATABASE_PREFIX', 'ncmika_');
 define('DATABASE_PCONNECT', 0);
 define('DATABASE_CHARSET',	'utf8');
 
