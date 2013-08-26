@@ -1,10 +1,8 @@
 <{strip}>
+<{if $smarty.session._user_id != "0"}>
 <table id="header_menu" summary="<{$lang.pages_summary_heder_menu}>">
 	<tr>
 		<td class="menu_left">
-		<a class="hidelink" href="#" onclick="location.href='<{$smarty.const.BASE_URL|smarty:nodefaults}><{$smarty.const.INDEX_FILE_NAME|smarty:nodefaults}>?action=pages_view_mobile&amp;reader_flag=<{$smarty.const._READER_FLAG_VALUE}>';return false;">
-		<img src="<{""|get_image_url}>/images/common/blank.gif" title="" alt="<{$lang._audio_browser}>" class="dummy_img icon" /></a>
-		<a class="hidelink" href="#center_column"><img src="<{""|get_image_url}>/images/common/blank.gif" title="" alt="<{$lang._move_center}>" class="dummy_img icon" /></a>
 		<{if $layoutmode == "on"}>
 			<{*グループ化*}>
 			<a class="menulink header_btn_left" href="#" title="<{$lang._grouping_title}>" onclick="pagesCls.addGrouping(event, '<{$lang._grouping_confirm}>','<{$lang._grouping_confirm_error}>'); return false;">
@@ -18,14 +16,6 @@
 		</td>
 		<td class="menu_right">
 			<{if $smarty.session._user_id == "0"}>
-				<{* 新規登録 *}>
-				<{if $autoregist_use == _ON}>
-					<a class="menulink header_btn_left" href="#" title="<{$lang.pages_login_autoregist_title}>" onclick="<{if ($use_ssl == _ON) }>location.href='<{$smarty.const.BASE_URL_HTTPS|smarty:nodefaults}><{$smarty.const.INDEX_FILE_NAME|smarty:nodefaults}>?active_center=login_view_main_autoregist&amp;prefix_id_name=login_popup_autoregist';<{else}>commonCls.sendPopupView(event, {'action':'login_view_main_autoregist','prefix_id_name':'login_popup_autoregist'},{center_flag:1});return false;<{/if}>">
-						<{$lang.pages_login_autoregist}>
-					</a>
-				<{/if}>
-				<{*ログイン*}>
-				<a  class="menulink <{if $autoregist_use == _ON}>header_btn<{else}>header_btn_left<{/if}> show_center" href="#" title="<{$lang.pages_login_title}>" onclick="loginCls['_0'].showLogin(event);return false;"><{$lang._login}></a>
 			<{else}>
 				<a class="menulink header_btn_left" href="#" title="<{$lang._user_title|sprintf:$smarty.session._handle}>" onclick="commonCls.showUserDetail(event, '<{$smarty.session._user_id}>');return false;">
 					<{$smarty.session._handle}>
@@ -73,4 +63,5 @@
 		</td>
 	</tr>
 </table>
+<{/if}>
 <{/strip}>

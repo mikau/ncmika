@@ -1,0 +1,57 @@
+/* Explorer Grid */
+.cabinet_dekitayo_explore_folder_tree {
+     height:230px;
+     width:151px;
+	white-space:normal;
+	overflow:scroll;
+}
+
+.cabinet_dekitayo_file_name {
+     width:151px;
+	white-space:normal;
+}
+
+.cabinet_dekitayo_file_upd_date {
+     width:60px;
+	white-space:normal;
+}
+.cabinet_dekitayo_file_comment{
+     width:272px;
+	white-space:normal;
+}
+.cabinet_dekitayo_context {
+     width:23px;
+	white-space:normal;
+}
+.cabinet_dekitayo_count {
+     width:47px;
+	white-space:normal;
+}
+
+/* th—p */
+.cabinet_dekitayo_th_explore_folder_tree {
+     height:230px;
+     width:147px;
+	white-space:normal;
+}
+
+.cabinet_dekitayo_th_file_name {
+     width:147px;
+	white-space:normal;
+}
+.cabinet_dekitayo_th_file_upd_date {
+     width:56px;
+	white-space:normal;
+}
+.cabinet_dekitayo_th_file_comment{
+     width:268px;
+	white-space:normal;
+}
+.cabinet_dekitayo_th_context {
+     width:19px;
+	white-space:normal;
+}
+.cabinet_dekitayo_th_count {
+     width:43px;
+	white-space:normal;
+}
