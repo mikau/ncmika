@@ -728,7 +728,46 @@ class Whatsnew_Components_View
 					$row["page_name"] = WHATSNEW_NO_PAGE;
 				}
 			}
+			// template dekitayo用読み込み　ページ名2insert----start-----------
+			$row['page_name2'] = '';
+			if($row["dir_name"] == 'journal'){
+				$sql = "SELECT journal.journal_name FROM {journal} journal " .
+						" INNER JOIN {journal_post} journal_post ON (journal.journal_id=journal_post.journal_id)" .
+						" WHERE journal_post.post_id=".$row["unique_id"];
+				$resultJournal = $this->_db->execute($sql);
+				if (empty($resultJournal)) {
+				} else {
+					$journalArray = $resultJournal[0];
+					$row['page_name2'] = $journalArray["journal_name"];
+				}
+			} else {
+				$block_id = '';
+				if (!empty($row["parameters"])) {
+					$parmList = explode("block_id=", $row["parameters"]);
+					if(count($parmList) > 0){
+						if(count($parmList) == 1){
+							$blockList = explode("#", $parmList[0]);
+						} else {
+							$blockList = explode("#", $parmList[1]);
+						}
+						$block_id=$blockList[0];
+					}
+				}
+				if($block_id != ''){
+					$sql = "SELECT block.block_name FROM {blocks} block " .
+							" WHERE block.block_id=".$block_id;
+			        $resultBlock = $this->_db->execute($sql);
+					if (empty($resultBlock)) {
+					} else {
+						$blockArray = $resultBlock[0];
+						$row['page_name2'] = $blockArray["block_name"];
+					}
+				}
+			}
+			// template dekitayo用読み込み　ページ名2insert----end-----------
 
+
+		$module_obj = $this->_modulesView->getModuleByDirname("reservation");
 			if (!isset($whatsnew_obj)) {
 				$ret = $row;
 				break;
