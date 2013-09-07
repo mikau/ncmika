@@ -54,7 +54,7 @@ define('FILEUPLOADS_DIR', dirname(INSTALL_INC_DIR) . '/uploads/');
 // ----------------------------
 // データベース用設定値
 // ----------------------------
-define('DATABASE_DSN', 'mysql://root:@localhost/ncmika');
+define('DATABASE_DSN', 'mysql://root:@localhost/tokyopen_ncmika');
 define('DATABASE_PREFIX', 'ncmika_');
 define('DATABASE_PCONNECT', 0);
 define('DATABASE_CHARSET',	'utf8');
