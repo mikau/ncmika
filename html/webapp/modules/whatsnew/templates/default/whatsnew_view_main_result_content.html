@@ -7,7 +7,7 @@
 				<{assign var="link_param" value=$whatsnew[i].action_name}>
 				<{assign var="link_param" value=$link_param|cat:"&amp;"|cat:$whatsnew[i].parameters|smarty:nodefaults}>
 
-				<{assign var="title" value=$whatsnew[i].title|truncate:$smarty.const.WHATSNEW_TITLE_LENGTH:$smarty.const._SEARCH_MORE:true|smarty:nodefaults}>
+				<{assign var="title" value=$whatsnew[i].title|truncate:47:$smarty.const._SEARCH_MORE:true|smarty:nodefaults}>
 				<a href="<{$smarty.const.BASE_URL}><{$smarty.const.INDEX_FILE_NAME}>?action=<{$smarty.const.DEFAULT_ACTION}>&amp;<{$link_param|smarty:nodefaults}>" title="<{$lang._move_title|smarty:nodefaults|sprintf:$title}>" onclick='whatsnewCls["<{$id}>"].showOriginal("<{$whatsnew[i].whatsnew_id}>", "action=<{$smarty.const.DEFAULT_ACTION}>&amp;<{$link_param|smarty:nodefaults}>"); return false;'>
 					<{$title}><{if ($whatsnew[i].count_num) }>(<{if ($whatsnew[i].dir_name == "photoalbum") }><{$lang.whatsnew_photo_count|smarty:nodefaults|sprintf:$whatsnew[i].count_num}><{else}><{$whatsnew[i].count_num}><{/if}>)<{/if}>
 				</a>

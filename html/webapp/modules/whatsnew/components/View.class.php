@@ -485,6 +485,9 @@ class Whatsnew_Components_View
 				if($whatsnew_obj['display_flag'] == _OFF){
 					$sql_where .= " AND whatsnew.child_update_time >= ? AND whatsnew.child_update_time < ? ";
 				}
+				// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----start-----------
+				$sql_where .= " AND whatsnew.title <> ''";
+				// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----end-----------
 				$sql_where .= $this->_makeSqlRoomWhere($_user_id, $room_arr_flat, $chief_room, $moderator_room);
 				$complete_sql = $sql.$sql_where.$sql_groupby.$sql_order;
 				$sqlgetdata = $sql2.$sql_where.$sql_groupby.$sql_order;
@@ -535,6 +538,9 @@ class Whatsnew_Components_View
 					$params["fm_insert_time"] = timezone_date($target_date, true, "YmdHis");
 					$params["to_insert_time"] = timezone_date($today, true, "YmdHis");
 				}
+				// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----start-----------
+				$sql_where .= " AND whatsnew.title <> ''";
+				// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----end-----------
 
 				$sql3 = $sql.$sql_where.$sql_groupby.$sql_order;
 				$sqlgetdata = $sql2.$sql_where.$sql_groupby.$sql_order;
@@ -555,6 +561,9 @@ class Whatsnew_Components_View
 			if($whatsnew_obj['display_flag'] == _OFF){
 				$sql_where .= " AND whatsnew.child_update_time >= ? AND whatsnew.child_update_time < ?";
 			}
+			// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----start-----------
+			$sql_where .= " AND whatsnew.title <> ''";
+			// dekitayo.com カスタマイズ「件名なし」のときは読み込まない----end-----------
 
 			$sql_where .= $this->_makeSqlRoomWhere($_user_id, $room_arr_flat, $chief_room, $moderator_room);
 			$sql .= $sql_where.$sql_groupby.$sql_order;
