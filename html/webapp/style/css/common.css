@@ -675,3 +675,15 @@ textarea.textarea {
 	width:450px;
 	height:80px;
 }
+
+/* ここからオリジナルcssにします */
+/* フォントを指定する */
+/* 文字を大きくする */
+body {
+	font-family:Verdana,'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+	font-size:0.9em;
+}
+/* 文字を大きくする */
+table {
+	font-size:1em;
+}
