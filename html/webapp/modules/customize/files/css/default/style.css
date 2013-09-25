@@ -1,0 +1,16 @@
+/* Css定義ファイル                     */
+/* (/^moduledir_*./)の形式で記述すること */
+.customize_hoge {
+}
+
+/* 追加*/
+.customize_value_1 {
+    margin: 5px;
+    padding: 3px;
+    color: #ff0000;
+}
+.customize_value_2 {
+    margin: 5px;
+    padding: 3px;
+    color: #0000ff
+}

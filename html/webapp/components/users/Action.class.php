@@ -57,6 +57,7 @@ class Users_Action
 	 * @access	public
 	 */
 	function insUser($params=array()) {
+		var_dump($params);
 		$sitesView =& $this->_container->getComponent("sitesView");
 		$sites = $sitesView->getSelfSite();
 		while(1) {
