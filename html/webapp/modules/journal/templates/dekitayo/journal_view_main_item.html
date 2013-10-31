@@ -1,7 +1,33 @@
 <{strip}>
-<table class="widthmax">
+<table class="widthmax" style="margin-bottom:20px;">
 	<tr>
-		<td class="journal_list_title" style="width:90%;">
+		<th class="journal_list_date" scope="row" style="background-image:none;border-style:none;padding:0 0 0 0px;">
+			<{$item.journal_date|timezone_date_format:$lang._date_format|smarty:nodefaults}>
+			<{if $action.journal_obj.new_period != 0 && $action.journal_obj.new_period_time <= $item.journal_date}>
+				<img class="icon" src="<{"new.gif"|get_modules_image}>" alt="<{$lang._new|smarty:nodefaults}>" title="<{$lang._new|smarty:nodefaults}>" />
+			<{/if}>
+		</th>
+		<td class="align-right journal_list_user" style="border-style:none;padding:0 0 0 20px;">
+			<{$lang._separator|smarty:nodefaults}>
+			<{$lang.journal_from|smarty:nodefaults}>
+			<a href="#" title="<{if $smarty.session._login_id == ''}><{$lang.journal_add_user_title|smarty:nodefaults|sprintf:$item.insert_user_name}><{else}><{$lang._user_title|smarty:nodefaults|sprintf:$item.insert_user_name}><{/if}>" class="syslink" onclick="commonCls.showUserDetail(event, '<{$item.insert_user_id}>');return false;">
+				<{$item.insert_user_name}>
+			</a>
+		</td>
+		<td class="align-right journal_list_user" style="border-style:none;padding:0 0 0 20px;">
+			<{if $action.journal_obj.sns_flag == _ON}>
+				<a class="journal_bookmark_icon" href="javascript:void window.open('http://twitter.com/intent/tweet?text='+encodeURIComponent('<{$item.title|smarty:nodefaults|escape:"javascript"|escape:"html"}> <{include file="../../../../templates/main/abbreviate_url.html" short_url=$item.short_url}>'), '_blank');">
+					<img class="icon" src="<{"t_mini-a.gif"|get_modules_image}>" alt="<{$lang.journal_tweet_this|smarty:nodefaults}>" title="<{$lang.journal_tweet_this|smarty:nodefaults}>" />
+				</a>
+				<a class="journal_bookmark_icon" href="javascript:void window.open('http://www.facebook.com/share.php?u='+encodeURIComponent('<{include file="../../../../templates/main/abbreviate_url.html" short_url=$item.short_url anchor=0}>')+'&amp;t='+encodeURIComponent('<{$item.title|smarty:nodefaults|escape:"javascript"|escape:"html"}>'), '_blank');">
+					<img class="icon" src="<{"f_mini.gif"|get_modules_image}>" alt="<{$lang.journal_send_to_facebook|smarty:nodefaults}>" title="<{$lang.journal_send_to_facebook|smarty:nodefaults}>" />
+				</a>
+			<{/if}>
+		</td>
+
+	</tr>
+	<tr>
+		<td class="journal_list_title" style="border-bottom:1px #c7cde6 solid;" colspan="3">
 			<h4 class="journal_list_title_h">
 				<{if $from == "list"}>
 					<{if strpos($id, JOURNAL_REFERENCE_PREFIX_NAME)}>
@@ -33,33 +59,7 @@
 				<{/if}>
 			</h4>
 		</td>
-		<td class="align-right journal_list_user" style="width:10%;">
-			<{if $action.journal_obj.sns_flag == _ON}>
-				<a class="journal_bookmark_icon" href="javascript:void window.open('http://twitter.com/intent/tweet?text='+encodeURIComponent('<{$item.title|smarty:nodefaults|escape:"javascript"|escape:"html"}> <{include file="../../../../templates/main/abbreviate_url.html" short_url=$item.short_url}>'), '_blank');">
-					<img class="icon" src="<{"t_mini-a.gif"|get_modules_image}>" alt="<{$lang.journal_tweet_this|smarty:nodefaults}>" title="<{$lang.journal_tweet_this|smarty:nodefaults}>" />
-				</a>
-				<a class="journal_bookmark_icon" href="javascript:void window.open('http://www.facebook.com/share.php?u='+encodeURIComponent('<{include file="../../../../templates/main/abbreviate_url.html" short_url=$item.short_url anchor=0}>')+'&amp;t='+encodeURIComponent('<{$item.title|smarty:nodefaults|escape:"javascript"|escape:"html"}>'), '_blank');">
-					<img class="icon" src="<{"f_mini.gif"|get_modules_image}>" alt="<{$lang.journal_send_to_facebook|smarty:nodefaults}>" title="<{$lang.journal_send_to_facebook|smarty:nodefaults}>" />
-				</a>
-			<{/if}>
-		</td>
 	</tr>
-	<tr>
-		<th class="journal_list_date" scope="row">
-			<{$item.journal_date|timezone_date_format:$lang._date_format|smarty:nodefaults}>
-			<{if $action.journal_obj.new_period != 0 && $action.journal_obj.new_period_time <= $item.journal_date}>
-				<img class="icon" src="<{"new.gif"|get_modules_image}>" alt="<{$lang._new|smarty:nodefaults}>" title="<{$lang._new|smarty:nodefaults}>" />
-			<{/if}>
-		</th>
-		<td class="align-right journal_list_user">
-			<{$lang._separator|smarty:nodefaults}>
-			<{$lang.journal_from|smarty:nodefaults}>
-			<a href="#" title="<{if $smarty.session._login_id == ''}><{$lang.journal_add_user_title|smarty:nodefaults|sprintf:$item.insert_user_name}><{else}><{$lang._user_title|smarty:nodefaults|sprintf:$item.insert_user_name}><{/if}>" class="syslink" onclick="commonCls.showUserDetail(event, '<{$item.insert_user_id}>');return false;">
-				<{$item.insert_user_name}>
-			</a>
-		</td>
-	</tr>
-
 </table>
 <{if $action.journal_obj.active_flag == $smarty.const._ON && $item.has_edit_auth}>
 <div class="journal_content" title="<{$smarty.const._DBLCLICK_EDIT}>" ondblclick="journalCls['<{$id}>'].showEditPost(this, '<{$item.post_id}>');" onmouseover="commonCls.blockNotice(event, this);">
